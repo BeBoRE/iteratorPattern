@@ -9,9 +9,10 @@ namespace Graph_Iterator
 {
     class BevolkingEnumerator : IEnumerator<Persoon>
     {
-        private Persoon _current;
         private List<Persoon> _iteratedOver;
         private Persoon _iteratorOf;
+
+        private bool hasCurrentBeenSelf = false;
 
         private IEnumerator<Persoon> _enumerator;
 
@@ -20,7 +21,7 @@ namespace Graph_Iterator
             get
             {
                 if (_enumerator != null) return _enumerator.Current;
-                else return _current;
+                else return _iteratorOf;
             }
         }
 
@@ -31,6 +32,8 @@ namespace Graph_Iterator
         {
             _iteratorOf = iteratorOf;
             _iteratedOver = iteratedOver;
+
+            _iteratedOver.Add(_iteratorOf);
         }
 
         public BevolkingEnumerator(Persoon iteratorOf) : this(iteratorOf, new List<Persoon>()) { }
@@ -42,14 +45,12 @@ namespace Graph_Iterator
 
         public bool MoveNext()
         {
-            if(_current == null)
+            if(!hasCurrentBeenSelf)
             {
-                _current = _iteratorOf;
-                _iteratedOver.Add(_iteratorOf);
-
+                hasCurrentBeenSelf = true;
                 return true;
             }
-
+            
             if(_enumerator == null || !_enumerator.MoveNext())
             {
                 Persoon next = _iteratorOf.vrienden.FirstOrDefault(p => !_iteratedOver.Any(p2 => p == p2));
