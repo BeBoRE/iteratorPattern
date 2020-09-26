@@ -35,5 +35,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bevolking.cs" />
+    <Compile Include="BevolkingEnumerator.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Persoon.cs" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
