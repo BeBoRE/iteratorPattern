@@ -47,9 +47,16 @@ namespace Graph_Iterator
             Persoon p11 = new Persoon("Mr. PBH");
             p11.addFriend(p8);
 
-            Bevolking bevolking = new Bevolking(p1);
+            Vriendengroep bevolking = new Vriendengroep(p1);
 
+            Console.WriteLine("--== Foreach ==--");
             foreach (Persoon p in bevolking) Console.WriteLine(p.naam);
+
+            Console.WriteLine("--== While ==--");
+            IEnumerator<Persoon> iterator = bevolking.GetEnumerator();
+            while (iterator.MoveNext())
+                Console.WriteLine(iterator.Current.naam);
+
         }
     }
 }

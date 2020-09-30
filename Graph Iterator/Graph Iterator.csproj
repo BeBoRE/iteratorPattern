@@ -36,8 +36,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bevolking.cs" />
-    <Compile Include="BevolkingEnumerator.cs" />
+    <Compile Include="Vriendengroep.cs" />
+    <Compile Include="VriendengroepEnumerator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Persoon.cs" />
   </ItemGroup>
